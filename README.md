@@ -37,7 +37,9 @@ Navigate to the route directory in your terminal and run the command ```npm star
 
 In production, make sure to add the environmental variable ```MONGODB_URI``` to connect to your database. Look into [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_americas_united_states_search_core_brand_atlas_desktop&utm_term=atlas%20mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624338&gclid=Cj0KCQjw1PSDBhDbARIsAPeTqrfV0-9GQjpkFTsXoGPEzLUJUixVa9aCPVX6sY49t9NCMgrr31cfTkQaAhtyEALw_wcB) for a production database solution.
 
-Lastly, Check out this ```Demo Video``` to see the API Routes tested in ```Insomnia Core```
+Lastly, Check out this [Demo Video](https://youtu.be/65xJ1gRyByk) to see the API Routes tested in ```Insomnia Core```
+
+[![demo-screen-shot](./assets/screenshot.png)](https://youtu.be/65xJ1gRyByk)
 
 
 ### Models
