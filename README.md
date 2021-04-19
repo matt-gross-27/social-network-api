@@ -18,7 +18,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [Models](#models)
-  - [Api Routes](#api%20routes)
+  - [Routes](#routes)
 - [Questions](#questions)
 - [License](#license)
 
@@ -70,7 +70,7 @@ Lastly, Check out this ```Demo Video``` to see the API Routes tested in ```Insom
   - Must be between 1 and 280 characters
 - ```createdAt```
   - Date
-  - default value to the current timestamp
+  - default value: current timestamp
 - ```username``` (The user that created this thought)
   - String
   - Required
@@ -93,12 +93,11 @@ Lastly, Check out this ```Demo Video``` to see the API Routes tested in ```Insom
   - Required
 - ```createdAt```
   - Date
-  - Set default value to the current timestamp
-  - Use a getter method to format the timestamp on query
+  - default value: current timestamp
 
 <hr />
 
-### API Routes
+### Routes
 #### ```/api/users```
 
 - ```GET``` all users
@@ -117,8 +116,6 @@ Lastly, Check out this ```Demo Video``` to see the API Routes tested in ```Insom
 - ```PUT``` to update a user by its ```_id```
 
 - ```DELETE``` to remove user by its ```_id```
-
-  - Remove a user's associated thoughts when deleted.
 
 <hr />
 
