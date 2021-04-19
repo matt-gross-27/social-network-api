@@ -19,7 +19,7 @@ const ReactionSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: new Date;
+      default: new Date,
       get: (v) => formatDate(v)
     }
   },
