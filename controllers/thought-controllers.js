@@ -52,17 +52,9 @@ const thoughtController = {
       body,
       { new: true, runValidators: true }
     )
-      .then(() => {
-        return User.findOneAndUpdate(
-          { _id: body.userId },
-          { $set: { thoughts: { _id: params.id } } },
-          { new: true, runValidators: true }
-        )
-          .then(data => !data
-            ? res.status(404).json({ message: 'User not found' })
-            : res.json(data))
-          .catch(err => res.status(400).json(err));
-      })
+      .then(data => !data
+        ? res.status(404).json({ message: 'Thought not found' })
+        : res.json(data))
       .catch(err => res.status(400).json(err));
   },
 
