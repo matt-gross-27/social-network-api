@@ -154,7 +154,7 @@ Lastly, Check out this ```Demo Video``` to see the API Routes tested in ```Insom
 
 - ```POST``` to create a reaction stored in a single thought's reactions array field
 
-### ```/api/thoughts/:thoughtId/reactions/reactionId```
+### ```/api/thoughts/:thoughtId/reactions/:reactionId```
 
 - ```DELETE``` to pull and remove a reaction by the reaction's ```reactionId``` value
 
