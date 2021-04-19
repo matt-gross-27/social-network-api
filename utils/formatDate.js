@@ -38,5 +38,23 @@ module.exports = (date) => {
       break;
   }
 
-  return `${month} ${day}${suffix} ${year}`;
+  function formatTime(hours, mins) {
+    if (mins < 10) {
+      mins = `0${mins}`
+    }
+
+    if (hours > 12) {
+      return `${hours - 12}:${mins}pm`
+    } 
+    else if (hours === 0) {
+      return `12:${mins}am`
+    }
+    else {
+      return `${hours}:${mins}am`
+    }
+  }
+
+  const time = formatTime(date.getHours(), date.getMinutes());
+
+  return `${month} ${day}${suffix} ${year} ${time}`;
 }

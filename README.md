@@ -1,34 +1,48 @@
 # Social Network Api
 
-## User Story
+<div style="position: absolute; top: 22px; right: 50px">
 
-```
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
-```
+![licence: MIT](https://img.shields.io/badge/license-MIT-blue)
+</div>
 
-## GIVEN a social network API
+## Description
 
-```
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-```
+- Social Network API is a lightweight Node.js backend for a social media application.
+- It's built using the NoSQL database ```MongoDB``` and uses the ODM, ```Mongoose```.
+- Feel free to clone this repo and add whatever other models and routes you may need!
 
 <hr />
 
-## Models
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Models](#models)
+  - [Api Routes](#api%20routes)
+- [Questions](#questions)
+- [License](#license)
 
-### User
+<hr />
+
+## Installation
+  - Clone this repository to your machine
+  - Make sure you have installed ```Node.js``` and ```MongoDB```
+  - Installation guides here: [Node](https://nodejs.org/en/download/) + [Mongo](https://docs.mongodb.com/manual/installation/)
+  - Run the command ```npm i``` to install ```express``` and ```mongoose``` npm packages.
+
+<hr />
+
+## Usage
+Navigate to the route directory in your terminal and run the command ```npm start```. If you have already installed ```MongoDB``` your database should be automatically connected and your server should be running on PORT 3001.
+
+In production, make sure to add the environmental variable ```MONGODB_URI``` to connect to your database. Look into [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_americas_united_states_search_core_brand_atlas_desktop&utm_term=atlas%20mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624338&gclid=Cj0KCQjw1PSDBhDbARIsAPeTqrfV0-9GQjpkFTsXoGPEzLUJUixVa9aCPVX6sY49t9NCMgrr31cfTkQaAhtyEALw_wcB) for a production database solution.
+
+Lastly, Check out this ```Demo Video``` to see the API Routes tested in ```Insomnia Core```
+
+
+### Models
+
+#### User
 - ```username```
   - String
   - Unique
@@ -38,17 +52,17 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
   - String
   - Required
   - Unique
-  - Must match a valid email address (look into Mongoose's matching validation)
+  - Must match a valid email address
 - ```thoughts```
   - Array of ```_id``` values referencing the Thought model
 - ```friends```
   - Array of ```_id``` values referencing the User model (self-reference)
-- Schema Settings
-  - Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+- ```friendCount``` (virtual)
+- ```thoughtCount``` (virtual)
 
 <hr />
 
-### Thought
+#### Thought
 
 - ```thoughtText```
   - String
@@ -56,18 +70,15 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
   - Must be between 1 and 280 characters
 - ```createdAt```
   - Date
-  - Set default value to the current timestamp
-  - Use a getter method to format the timestamp on query
+  - default value to the current timestamp
 - ```username``` (The user that created this thought)
   - String
   - Required
 - ```reactions``` (These are like replies)
   - Array of nested documents created with the reactionSchema
+- ```reactionCount``` (virtual)
 
-- Schema Settings
-  - Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
-
-### Reaction (Subdocument)
+#### Reaction (Subdocument for Thought's ```reactions``` field)
 <hr />
 
 - ```reactionId```
@@ -84,13 +95,11 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
   - Date
   - Set default value to the current timestamp
   - Use a getter method to format the timestamp on query
-- Schema Settings
-  - This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
 
 <hr />
 
-## API Routes
-### ```/api/users```
+### API Routes
+#### ```/api/users```
 
 - ```GET``` all users
 
@@ -113,7 +122,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 <hr />
 
-### ```/api/users/:userId/friends/:friendId```
+#### ```/api/users/:userId/friends/:friendId```
 
 - ```POST``` to add a new friend to a user's friend list
 
@@ -121,7 +130,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 <hr />
 
-### ```/api/thoughts```
+#### ```/api/thoughts```
 
 - ```GET``` to get all thoughts
 
@@ -132,7 +141,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 // example data
 {
-  "thoughtText": "Here's a cool thought...",
+  "thoughtText": "Here's a thought...",
   "username": "mg",
   "userId": "5edff358a0fcb779aa7b118b"
 }
@@ -150,4 +159,12 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ### ```/api/thoughts/:thoughtId/reactions/reactionId```
 
-- ```DELETE``` to pull and remove a reaction by the reaction's reactionId value
+- ```DELETE``` to pull and remove a reaction by the reaction's ```reactionId``` value
+
+## Questions
+- Feel free to reach out with any question
+  - GitHub: [matt-gross-27](https://www.github.com/matt-gross-27)
+  - Email: [mbgross111@gmail.com](mailto:mbgross111@gmail.com)
+
+## License
+- MIT
